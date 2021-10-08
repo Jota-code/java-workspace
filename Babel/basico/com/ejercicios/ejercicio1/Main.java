@@ -20,6 +20,7 @@ public class Main {
 		GraphicsCard gpu1,gpu2,apu;
 		ArrayList<Periferal> periferalList = new ArrayList<Periferal>();
 		
+		
 		apuRam = new Ram();
 		apuRam.setPrice(0);
 		apuRam.setHz(2000);
