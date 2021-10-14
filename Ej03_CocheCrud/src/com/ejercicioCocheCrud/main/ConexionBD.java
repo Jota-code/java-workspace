@@ -3,18 +3,19 @@ package com.ejercicioCocheCrud.main;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.ejercicioCocheCrud.utils.UtilData;
+
 
 public class ConexionBD {
 	
-	private static Connection con = null;
-	private static final String connection = "jdbc:mysql://localhost:3306/";
-	private static final String dbName = "bbdd";
-	private static final String user = "root";
-	private static final String pass = "";
+	static Connection con = null;
+	
 
 	public static void main(String[] args) {
 		
-		String cadenaConexion = "jdbc:mysql://localhost:3306/bbdd";
+		
 		String user = "root";
 		String pass = "";
 		
@@ -22,13 +23,13 @@ public class ConexionBD {
 		con = null;
 		
 		try {
-			con = DriverManager.getConnection(cadenaConexion,user,pass);
+			con = DriverManager.getConnection(UtilData.getCadenaconexion(),user,pass);
+			System.out.println("Conectado a la base de datos "+UtilData.getDbname());
 		} catch (SQLException e) {
 			System.out.println("No se ha podido establecer la conexion con la BD");
 			System.out.println(e.getMessage());
-			System.out.println("Creando base de datos");
 			createDB();
-			e.printStackTrace();
+			
 			return;
 		}
 
@@ -36,8 +37,20 @@ public class ConexionBD {
 
 	private static void createDB() {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/",user,pass);
+			con = DriverManager.getConnection(UtilData.getConnection(),UtilData.getUser(),UtilData.getPass());
 			System.out.println("Creating database bbdd");
+			String sql = UtilData.getDatabaseBbdd();
+			Statement st = con.createStatement();
+			st.executeUpdate(sql);
+			System.out.println("Database created, now jumping into it");
+			sql = "USE bbdd";
+			st.executeUpdate(sql);
+			System.out.println("Now creating table Car ...");
+			sql = UtilData.getTableCar();
+			st.executeUpdate(sql);
+			System.out.println("Table Car created, now begining with the program");
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
