@@ -17,6 +17,9 @@ public class Hilo extends Thread {
 			if (num % i == 0) {
 				cont++;
 			}
+			if(cont>2)	{
+				break;
+			}
 		}
 		if (cont == 2) {
 			System.out.println("El numero " + num + " es primo");
