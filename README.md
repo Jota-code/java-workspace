@@ -21,3 +21,9 @@
 	14/10/2021
 	- Ej07_HilosPrimosProgramacionFuncional(Lambda)
 	14/10/2021
+	- Ej08_MavenCocheCapas (TODO)
+	15/10/2021
+	- Ej08_MavenCocheCapasTesting (TODO)
+	15/10/2021
+	- Ej09_SpringSuperHeroe
+	18/10/2021

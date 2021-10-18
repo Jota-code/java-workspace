@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="superHeroDefaultHulk" class="model.entity.SuperHero"
+		scope="singleton">
+		<property name="id" value="1"></property>
+		<property name="name" value="superHeroDefault1"></property>
+		<property name="superHeroName" value="superHeroDefaultHulk"></property>
+		<property name="powerName" value="defaultSuperStrenght"></property>
+		<property name="power" value="80"></property>
+	</bean>
+	<bean id="superHeroDefaultSpiderMan" class="model.entity.SuperHero"
+		scope="singleton">
+		<property name="id" value="2"></property>
+		<property name="name" value="superHeroDefault2"></property>
+		<property name="superHeroName"
+			value="superHeroDefaultSpiderMan"></property>
+		<property name="powerName" value="defaultSpiderWebs"></property>
+		<property name="power" value="70"></property>
+	</bean>
+	<bean id="superHeroDefaultCaptainAmerica" class="model.entity.SuperHero"
+		scope="singleton">
+		<property name="id" value="3"></property>
+		<property name="name" value="superHeroDefault3"></property>
+		<property name="superHeroName"
+			value="superHeroDefaultCptnAmerica"></property>
+		<property name="powerName" value="default"></property>
+		<property name="power" value="60"></property>
+	</bean>
+
+	<bean id="superHeroPowerPrototype" class="model.entity.SuperHero"
+		scope="prototype">
+		<property name="power" value="100"></property>
+	</bean>
+
+	<bean id="superHeroFlyingPrototype" class="model.entity.SuperHero"
+		scope="prototype">
+		<property name="powerName" value="fly"></property>
+	</bean>
+
+	<bean id="powerSuperHeroesPrototypeList" class="java.util.ArrayList"
+		scope="singleton">
+
+	</bean>
+
+	<bean id="flyingSuperHeroesPrototypeList" class="java.util.ArrayList"
+		scope="singleton">
+
+	</bean>
+
+
+</beans>
