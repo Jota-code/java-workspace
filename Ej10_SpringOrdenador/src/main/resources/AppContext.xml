@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+
+	<bean id="ram1" class="model.entity.Ram" scope="singleton">
+		<property name="price" value="50"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+	
+	<bean id="ram2" class="model.entity.Ram" scope="singleton">
+		<property name="price" value="50"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+	<bean id="gpuRam" class="model.entity.Ram" scope="singleton">
+		<property name="price" value="50"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+	
+	<bean id="ramList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="model.entity.Ram">
+				<ref bean="ram1"/>
+				<ref bean="ram2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+
+	<bean id="gpu1" class="model.entity.GraphicsCard" scope="singleton">
+		<property name="price" value="300"></property>
+		<property name="brand" value="Nvidia"></property>
+		<property name="ram" ref="gpuRam"></property>
+		<property name="modelo" value="gtx1080"></property>
+	</bean>
+	
+	<bean id="gpu2" class="model.entity.GraphicsCard" scope="singleton">
+		<property name="price" value="300"></property>
+		<property name="brand" value="Nvidia"></property>
+		<property name="ram" ref="gpuRam"></property>
+		<property name="modelo" value="gtx1080"></property>
+	</bean>
+	
+	<bean id="gpu3" class="model.entity.GraphicsCard" scope="singleton">
+		<property name="price" value="300"></property>
+		<property name="brand" value="Nvidia"></property>
+		<property name="ram" ref="gpuRam"></property>
+		<property name="modelo" value="gtx1080"></property>
+	</bean>
+	
+	<bean id="gpuList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="model.entity.GraphicsCard">
+				<ref bean="gpu1"/>
+				<ref bean="gpu2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+	
+	<bean id="periferal1" class="model.entity.Periferal">
+		<property name="periferalType" value="MOUSE"></property>
+		<property name="price" value="45"></property>
+		<property name="brand" value="IBM"></property>
+	</bean>
+	<bean id="periferal2" class="model.entity.Periferal">
+		<property name="periferalType" value="KEYBOARD"></property>
+		<property name="price" value="200"></property>
+		<property name="brand" value="Logitech"></property>
+	</bean>
+	<bean id="periferalList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="model.entity.Periferal">
+				<ref bean="periferal1"/>
+				<ref bean="periferal2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="mobo" class="model.entity.MotherBoard">
+		<property name="price" value="30"></property>
+		<property name="brand" value="Gigabyte"></property>
+		<property name="model" value="Z390"></property>
+	</bean>
+	
+	
+	<bean id="processor" class="model.entity.Processor" scope="singleton">
+		<property name="price" value="300"></property>
+		<property name="hz" value="4.5"></property>
+		<property name="brand" value="Intel"></property>
+		<property name ="apu" ref="gpu3"></property>		
+	</bean>
+	
+	
+	
+	<bean id="computer" class="model.entity.Computer" scope="singleton">
+		<property name="brand" value="asus"></property>
+		<property name="price" value="2000"></property>
+		
+		<property name="ramList" ref="ramList"></property>
+		
+		<property name="processor" ref="processor"></property>
+		
+		<property name="gpuList" ref="gpuList"></property>
+		
+		<property name="periferalList" ref="periferalList"></property>
+		
+		<property name="motherboard" ref="mobo"></property>	
+		
+	</bean>
+	
+
+
+</beans>
