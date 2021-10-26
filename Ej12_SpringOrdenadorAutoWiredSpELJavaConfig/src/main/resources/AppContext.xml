@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="util" class="util.Util"></bean>
+
+	<context:component-scan base-package="es.curso"></context:component-scan>
+
+	<bean id="ram1" class="model.entity.Ram" scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(30,50)}"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+
+	<bean id="ram2" class="model.entity.Ram" scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(30,50)}"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+	<bean id="gpuRam" class="model.entity.Ram" scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(30,70)}"></property>
+		<property name="hz" value="3000"></property>
+		<property name="generation" value="DDR6"></property>
+	</bean>
+
+	<bean id="ramList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="model.entity.Ram">
+				<ref bean="ram1" />
+				<ref bean="ram2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+
+
+	<bean id="gpu1" class="model.entity.GraphicsCard"
+		scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(300,350)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="modelo" value="gtx1080"></property>
+		<property name="ram" ref="gpuRam"></property>
+	</bean>
+
+	<bean id="gpu2" class="model.entity.GraphicsCard"
+		scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(300,350)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="modelo" value="gtx1080"></property>
+		<property name="ram" ref="gpuRam"></property>
+	</bean>
+
+	<bean id="apu" class="model.entity.GraphicsCard" scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(300,350)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="modelo" value="gtx1080"></property>
+		<property name="ram" ref="gpuRam"></property>
+	</bean>
+
+	<bean id="gpuList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="model.entity.GraphicsCard">
+				<ref bean="gpu1" />
+				<ref bean="gpu2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+
+
+	<bean id="periferal1" class="model.entity.Periferal">
+		<property name="periferalType" value="MOUSE"></property>
+		<property name="price"
+			value="#{util.generateRandomNumber(30,50)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+	</bean>
+	<bean id="periferal2" class="model.entity.Periferal">
+		<property name="periferalType" value="KEYBOARD"></property>
+		<property name="price"
+			value="#{util.generateRandomNumber(220,300)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+	</bean>
+	<bean id="periferalList" class="java.util.ArrayList"
+		autowire="default">
+		<constructor-arg>
+			<list value-type="model.entity.Periferal">
+				<ref bean="periferal1" />
+				<ref bean="periferal2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="motherboard" class="model.entity.MotherBoard">
+		<property name="price"
+			value="#{util.generateRandomNumber(80,120)}"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="model" value="Z390"></property>
+	</bean>
+
+
+	<bean id="processor" class="model.entity.Processor"
+		scope="singleton">
+		<property name="price"
+			value="#{util.generateRandomNumber(200,400)}"></property>
+		<property name="hz" value="4.5"></property>
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="apu" ref="apu"></property>
+	</bean>
+
+
+
+	<bean id="computer" class="model.entity.Computer"
+		scope="singleton" autowire="byName">
+		<property name="brand" value="#{util.generateRandomBrands()}"></property>
+		<property name="price"
+			value="#{util.generateRandomNumber(1800,2000)}"></property>
+
+
+
+	</bean>
+
+
+
+</beans>
